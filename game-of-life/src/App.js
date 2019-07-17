@@ -10,7 +10,7 @@ class App extends React.Component {
     this.cols = 50;
 
     this.state = {
-      generation: 0,
+      // generation: 0,
       gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     }
   }
@@ -40,8 +40,8 @@ class App extends React.Component {
 
   playButton = () => {
     //calls play function at this.props.speed(every 100ms right now)
-    clearInterval(this.intervalId)
-    this.intervalId = setInterval(this.play, this.speed)
+    clearInterval(this.intervalId);
+    this.intervalId = setInterval(this.play, this.speed);
   }
 
   pauseButton = () => {
@@ -97,7 +97,7 @@ class App extends React.Component {
     }
     this.setState({
       gridFull: gridCopy2,
-      generation: this.state.generation + 1
+      // generation: this.state.generation + 1
     })
   }
 
@@ -110,19 +110,21 @@ class App extends React.Component {
   return (
     <div className="App">
         <h1>The Game of Life</h1>
-        <button onClick={this.playButton}>
-          Play  
-        </button>
-        <button onClick={this.pauseButton}>
-          Pause
-        </button>
         <Grid 
         gridFull = {this.state.gridFull}
         rows = {this.rows}
         cols = {this.cols}
         selectBox = {this.selectBox}
         />
-        <h2>Generations: {this.state.generation} </h2>
+        <div className="gameBtnsContainer">
+        <button onClick={this.playButton}>
+          Play  
+        </button>
+        <button  onClick={this.pauseButton}>
+          Pause
+        </button>
+        </div>
+        {/* <h2>Generations: {this.state.generation} </h2> */}
     </div>
     );
   }
