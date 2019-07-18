@@ -50,10 +50,21 @@ class App extends React.Component {
   }
 
   clearButton = () => {
+    clearInterval(this.intervalId);
     let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     this.setState({
       gridFull: grid
     })
+  }
+
+  slowSpeed = () => {
+    this.speed = 1000;
+    this.playButton();
+  }
+
+  fastSpeed = () => {
+    this.speed = 70;
+    this.playButton();
   }
 
   play = () => {
@@ -131,14 +142,20 @@ class App extends React.Component {
         <button onClick={this.playButton}>
           Play  
         </button>
-        <button onClick={this.seed}>
-          Seed 
-        </button>
         <button  onClick={this.pauseButton}>
           Pause
         </button>
+        <button onClick={this.seed}>
+          Seed 
+        </button>
         <button  onClick={this.clearButton}>
           Clear
+        </button>
+        <button  onClick={this.slowSpeed}>
+          Slow
+        </button>
+        <button  onClick={this.fastSpeed}>
+          Fast
         </button>
         </div>
         {/* <h2>Generations: {this.state.generation} </h2> */}
