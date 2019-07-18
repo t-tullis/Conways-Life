@@ -6,12 +6,12 @@ import './App.css';
 class App extends React.Component {
   constructor(){
     super()
-    this.speed = 100;
+    this.speed = 150;
     this.rows = 20;
     this.cols = 30;
 
     this.state = {
-      // generation: 0,
+      generation: 0,
       gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     }
   }
@@ -53,7 +53,8 @@ class App extends React.Component {
     clearInterval(this.intervalId);
     let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     this.setState({
-      gridFull: grid
+      gridFull: grid,
+      generation: 0
     })
   }
 
@@ -116,7 +117,7 @@ class App extends React.Component {
     }
     this.setState({
       gridFull: gridCopy2,
-      // generation: this.state.generation + 1
+      generation: this.state.generation + 1
     })
   }
 
@@ -138,6 +139,9 @@ class App extends React.Component {
           />
           <Rules />
         </div>
+        <br />
+        <h2>Generations: {this.state.generation} </h2>
+
         <div className="gameBtnsContainer">
         <button onClick={this.playButton}>
           Play  
@@ -158,7 +162,6 @@ class App extends React.Component {
           Fast
         </button>
         </div>
-        {/* <h2>Generations: {this.state.generation} </h2> */}
     </div>
     );
   }
