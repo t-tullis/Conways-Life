@@ -1,13 +1,14 @@
 import React from 'react';
 import Grid from './components/Grid'
+import Rules from './components/Rules'
 import './App.css';
 
 class App extends React.Component {
   constructor(){
     super()
     this.speed = 100;
-    this.rows = 30;
-    this.cols = 50;
+    this.rows = 20;
+    this.cols = 30;
 
     this.state = {
       // generation: 0,
@@ -46,6 +47,13 @@ class App extends React.Component {
 
   pauseButton = () => {
     clearInterval(this.intervalId);
+  }
+
+  clearButton = () => {
+    let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+    this.setState({
+      gridFull: grid
+    })
   }
 
   play = () => {
@@ -102,26 +110,35 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.seed();
     this.playButton();
+    this.seed();
   }
 
   render(){
   return (
     <div className="App">
         <h1>The Game of Life</h1>
-        <Grid 
-        gridFull = {this.state.gridFull}
-        rows = {this.rows}
-        cols = {this.cols}
-        selectBox = {this.selectBox}
-        />
+        <div className="gridandrules">
+          <Grid 
+            gridFull = {this.state.gridFull}
+            rows = {this.rows}
+            cols = {this.cols}
+            selectBox = {this.selectBox}
+          />
+          <Rules />
+        </div>
         <div className="gameBtnsContainer">
         <button onClick={this.playButton}>
           Play  
         </button>
+        <button onClick={this.seed}>
+          Seed 
+        </button>
         <button  onClick={this.pauseButton}>
           Pause
+        </button>
+        <button  onClick={this.clearButton}>
+          Clear
         </button>
         </div>
         {/* <h2>Generations: {this.state.generation} </h2> */}
