@@ -1,68 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In Conway's Game of Life, each cell is either dead or alive, also referred to as state being on or off(true/false). Every cell will interact with its 8 neighbors.
+Where the 4 rules come into play:
+1. A live cell with less than two live neighbors dies.
+2. A live cell with two or three neighbors lives on to the next generation.
+3. A live cell with more than tree neighbors dies(overpopulation).
+4. A dead cell with exactly three neighbours is reborn and becomes a live cell.
 
-## Available Scripts
+When the game starts the above rules are applied and will update the state of the grid for the next generation. We evaluate the live cells and their neighbors to know which state they will be in the next generation.
 
-In the project directory, you can run:
+The initial step is to start with the set up of the grid, which in my case this was just setting up a grid in react using divs and mapping to create rows and columns. Once the grid was complete we move onto the logic of the game. In order to randomize the cells that are initialized, I used nested for loops and randomized the cells that were going to start off in the "live/true" state.
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+When we start analyzing the individual cells to look at their neighbors, we want to get the x, y coordinates to help us locate the live and dead cells in relation to each cell. As per the rules, if were looking at cell x, we want to analyze the current gen of the eight surrounding cells and implement the correct logic to know whether the neighboring cells will "die" or "reproduce".  I created a 2d array to keep the position of the cells and used a seed function to randomly seed cells on to the grid, and once play is clicked our play function runs and the game logic is implemented determining live or dead cells. The grid state will run every iteration at 150ms (determining the speed you choose if fast is clicked it will run every 75ms and if slow is clicked then it will run every 1000ms).
+When seed is clicked it randomly seeds cells on the board in different locations, we can pause and play. I also added a feature if cells get stuck you can actually click on the grid and add a cell to continue. 
