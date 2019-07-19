@@ -1,0 +1,98 @@
+/* body {
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png) 
+} */
+*{
+    font-family: 'Viga', sans-serif;
+ }
+
+ .App{
+   margin-top: 50px;
+   border: 2px solid black;
+   border-radius: 5px;
+   margin: 50px;
+ }
+
+.box {
+  display: inline-block;       
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  margin-left: -1px;
+  margin-bottom: -1px;
+  }
+
+.off {
+  background-color: lightgray;
+}
+
+.on {
+  background-color: coral;
+}
+  
+.box:hover { 
+  background: #00CCFF;
+}
+
+.center {
+  margin: auto;
+  display: table;
+  margin-top: 10px;
+}
+
+.grid {
+  width: 150px;
+  line-height: 0;
+  margin: auto;
+  margin-top: 20px;
+}
+  
+h1, h2, h3, h4 {
+  color: black;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  margin-top: 10px;
+}
+
+h4 {
+  margin-top: 0px;
+}
+
+h1{
+  font-size: 45px;
+}
+
+.gameBtnsContainer{
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button{
+  height: 30px;
+  width: 175px;
+  border-radius: 5px;
+  border: 1px dotted black;
+  margin: 20px 10px;
+}
+
+button:hover{
+  border: 1px dotted coral;
+  cursor: pointer;
+  color: #00CCFF;
+}
+
+li{
+  margin-bottom: 20px;
+}
+.rules{
+  font-size: 15px;
+  margin: 0 auto;
+}
+
+.gridandrules{
+  display: flex;
+  justify-content: space-evenly;
+}
